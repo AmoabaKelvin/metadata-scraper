@@ -14,12 +14,6 @@ app.add_middleware(
 )
 
 
-async def on_fetch(request, env):
-    import asgi
-
-    return await asgi.fetch(app, request, env)
-
-
 @app.get("/")
 def health():
     return {"Ping": "Pong"}
