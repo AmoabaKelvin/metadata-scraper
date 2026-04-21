@@ -3,12 +3,9 @@ from bs4 import BeautifulSoup
 
 
 def get_page(url):
-    try:
-        response = requests.get(url)
-        response.raise_for_status()
-    except requests.exceptions.RequestException as e:
-        return str(e)
-    return response.text
+    response = requests.get(url, timeout=10)
+    response.raise_for_status()
+    return response.content
 
 
 def get_metadata(page, url):
